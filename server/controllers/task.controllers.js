@@ -1,19 +1,30 @@
-const getTasks = (req,res) =>{
+import {pool} from '../db.js'
+
+export const getTasks = (req,res) =>{
     res.send('get tasks');
 }
 
-const getTask = (req,res) =>{
+export const getTask = (req,res) =>{
     res.send('get task');
 }
 
-const createTask = (req,res) =>{
-    res.send('create tasks');
-}
+export const createTask = async (req,res) =>{
+    const {title,description} = req.body;
+    const [result] = await pool.query(
+        "INSERT INTO tasks(title,description) VALUES (?,?)",
+        [title,description]
+    );
+    res.json({
+        id:result.insertId,
+        title,
+        description,
+    });
+} 
 
-const updateTask = (req,res) =>{
+export const updateTask = (req,res) =>{
     res.send('update tasks');
 }
 
-const deleteTask = (req,res) =>{
+export const deleteTask = (req,res) =>{
     res.send('delete tasks');
 }
