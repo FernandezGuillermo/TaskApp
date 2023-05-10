@@ -29,8 +29,12 @@ export const createTask = async (req,res) =>{
     });
 } 
 
-export const updateTask = (req,res) =>{
-    res.send('update tasks');
+export const updateTask = async (req,res) =>{
+    const result = await pool.query("UPDATE tasks SET ? WHERE id = ?",[
+        req.body,
+        req.params.id,
+    ]);
+    res.json(result)
 }
 
 export const deleteTask = async (req,res) =>{
