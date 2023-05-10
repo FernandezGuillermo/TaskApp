@@ -4,6 +4,6 @@ export const pool = createPool({
     host:"localhost",
     user:"root",
     password:"32463929",
-    database:"blog"
+    database:"tasksapp"
 })
 
