@@ -5,5 +5,5 @@ export const pool = createPool({
     user:"root",
     password:"32463929",
     database:"tasksapp"
-})
+}) 
 
